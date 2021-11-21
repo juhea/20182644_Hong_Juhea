@@ -54,5 +54,44 @@
  		 ==> 보통 다음과 같은 형식을 주로 사용
   
 
+ • argument 는
+  
+		  1. option:(Verbose mode)
+		  2. :option:(Silent mode) 
+		  
+## - Verbose mode
 
+  • getopts "a:" 는 a 옵션에 콜론(:)을 붙여 인자를 요구케 함 (Verbose mode)
+  
+  • 옵션은 $opt로 들어간다.
+  
+  • argument는 $OPTARG로 들어간다.
+  
+    • Ex) -a "hello world"
+  
+      • $opt: 'a'
+  
+      • $OPTARG: "hello world"
+      
+      
+|Verbose mode|Description|
+|---|---|
+|invalid  옵션 사용 시, "a:bc" 만 허용 하는데, -d 같은 것 넣은 경우|opt 값을 ?문자로 설정하고 OPTARG 값은 unset. 오류 메시지 출력|
+|argument 안 넣었을 때, "a:bc"로 설정해 -a 'arg' 넣어야하는데 -a 만 넣은 경우|opt 값을 ?문자로 설정하고 OPTARG 값은 unset. 오류 메시지 출력|
+
+
+ ## - Silent mode
+ 
+  • getopts " : a : " 는 a 옵션 앞에 콜론(:)을 붙여 더 세밀한 error handling이 가능하게 한다. (Silent mode)
+  
+  
+|Silent mode|Description|
+|---|---|
+|invalid  옵션 사용 시, "a:bc" 만 허용 하는데, -d 같은 것 넣은 경우|opt 값을 ?문자로 설정하고 OPTARG 값은 해당 옵션 문자로 설정|
+|argument 안 넣었을 때, "a:bc"로 설정해 -a 'arg' 넣어야하는데 -a 만 넣은 경우|opt 값을 :문자로 설정하고 OPTARG 값은 해당 옵션 문자로 설정|
+
+
+#### while getopts " a : hd " opt; do (a옵션은 argument(verbose mode)를 가지고, 나머지 옵션은 그냥 옵션만 가진다)
+  
+#### while getopts " : a : hd " opt; do (a옵션은 argument(silent mode)를 가지고, 나머지 옵션은 그냥 옵션만 가진다)
 

@@ -320,6 +320,65 @@
 ----
 
 
+### awk 의 사용
+
+
+          일반적으로 grep 과 같이 사용
+          
+    
+              1. grep 을 이용하여 데이터 파일의 구조 확인  
+              
+              2. 정규화가 가능하지를 확인하고 sed로 테스트 한후에 awk 가 처리할수 있을정도로
+              
+                 정규화되있다면 awk를 사용 
+              
+              3. sed로 정규화된 양식을 awk 로 처리
+              
+              
+---
+
+### awk 명령어
+
+      awk '/west/' datafile : west 라는 글이 있는 줄 출력
+      
+      awk '/^north/' datafile : north로 시작하는 줄 출력
+      
+      awk '/^(no | so)/' datafile : no 또는 so 로 시작하는 줄 출력
+      
+      awk '{ print $3, $2 }' datafile : datafile 리스트의 세 번째 와 두 번째 필드를 스페이스로 띄어서 출력
+      
+      awk '{ print $3 $2 }' datafile : datafile 리스트의 세 번째 와 두 번째 필드를 그냥 붙여서 출력 
+      
+      awk '{ print "Number of fields : " NF} ' datafile : datafile의 각 줄마다의 필드수를 리턴
+      
+      awk '$5 ~ /\.[7-9]+/' datafile : 다섯 번째 필드가 마침표 다음엣 7과 9사이 숫자가 하나 이상 나오는 레코드 출력
+      
+      awk '$2 !~ /E/ { print $1, $2 }' datafile : 두 번째 필드에 E 패턴이 없는 레코드의 첫 번째와 두 번째 필드 출력
+      
+      awk '$3 ~ /^Joel/{ print $3 " is a nice guy."} ' datafile : 세 번째 필드가 Joel로 시작하면 " is a nice guy"와 함께 출력
+      
+      awk '$8 ~ /[0-9][0-9]$/ { print $8 }' datafile : 여덟 번째 필드가 두 개의 숫자이면 그 필드가 출력
+      
+      awk '$4 ~ /Chin$/ { print "The price is $" $8 "." }' datafile : 네 번째 필드가 Chine으로 끝나면 
+      
+                                                                     "The price is $" 8번 필드 및 마침표가 출력
+								     
+      awk -F: '{ print $1 } ' datafile : -F 옵션은 입력 필드를 ':'로 구별
+      
+      awk -F"[ :]" '{ print $1, $2 } ' datafile : 입력 필드로 스페이스와 ':'를 필드 구별자로 사용
+      
+      awk -f awk_script.file datafile : -f 옵션은 awk 스크립트 파일 사용할 때 씀
+      
+      awk '$7 == 5' datafile : 7번 필드가 5와 같다면 출력
+      
+      awk '$2 == "CT" { print $1, $2 }' datafile : 2번 필드가 "CT" 문자와 같으면 1, 2 번 필드 출력
+      
+      awk '$7 <5 { print $4, $7}' datafile : 7번 필드가 5보다 작다면 4번, 7번 필드 출력
+      
+      awk '$6 >.9 { print $1, $6}' datafile : 6번 필드가 .9 보다 크다면 1번, 6번 출력
+      
+      
+---      
 
 
 

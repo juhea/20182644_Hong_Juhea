@@ -95,3 +95,29 @@
   
 #### while getopts " : a : hd " opt; do (a옵션은 argument(silent mode)를 가지고, 나머지 옵션은 그냥 옵션만 가진다)
 
+
+### - 주의할 점
+
+  • : a : hd
+  
+     a만 argument를 요구(silent mode)
+  
+  • h : a : d
+  
+     의도: a를 argument 요구(silent mode) 하고 싶음
+  
+     실제 실행: 
+  
+        h argument 요구(verbose mode) 
+	        a argument요구(verbose mode)
+    
+---
+
+
+
+
+
+
+
+
+

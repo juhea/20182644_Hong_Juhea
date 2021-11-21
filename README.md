@@ -63,7 +63,8 @@
 
   ![image](https://user-images.githubusercontent.com/94774284/142756801-50eabec8-36c7-4f20-adc7-cf5eb423a6c0.png)
   
-   ### while getopts " a : b : h "apt
+  
+   ### - while getopts " a : b : h "apt
    
  		 ==> 보통 다음과 같은 형식을 주로 사용
   
